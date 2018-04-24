@@ -1,0 +1,15 @@
+{% if error_message %}
+ <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<form action="{% url 'votacao:gravar_novaquestao' %}" method="post">
+    {% csrf_token %}
+    Questão: <input type="text" size=120px name="text" value = {{ text }}>
+    <br>
+    <br>
+    <input type="submit" value="Gravar nova questão">
+</form>
+
+<form action="{% url 'votacao:index' %}">
+    <input type="submit" value="Voltar ao índex" />
+</form>

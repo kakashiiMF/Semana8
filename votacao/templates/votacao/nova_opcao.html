@@ -1,0 +1,17 @@
+{% if error_message %}
+ <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<p>Questão: {{ questao.questao_texto }}</p>
+
+<form action="{% url 'votacao:gravar_novaopcao' questao.id %}" method="post">
+    {% csrf_token %}
+    Opção: <input type="text" size=120px name="opcao" value = {{ opcao }}>
+    <br>
+    <br>
+    <input type="submit" value="Gravar nova opção">
+</form>
+
+<form action="{% url 'votacao:index' %}">
+    <input type="submit" value="Voltar ao índex" />
+</form>
